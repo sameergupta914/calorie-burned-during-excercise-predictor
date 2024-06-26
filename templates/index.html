@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/x-icon">
+        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
+        <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title>Calories Burnt Predictor</title>
+    </head>
+    <body class="bg-main relative h-full mt-20 pb-5">
+        <div class="flex flex-col items-center h-full mt-5">
+            <div class="text-3xl sm:text-4xl md:text-5xl text-slate-100 space-y-1 xs:space-x-3 flex flex-col justify-end items-center xs:flex-row font-medium font-mono">
+                <div class="flex items-center">
+                    <span class="iconify h-10 w-10 mr-2 text-red-400" data-icon="fluent-mdl2:calories"></span> 
+                    <span>Calories</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span>Burned</span>
+                    
+                    <span>Predictor</span>
+                </div>
+            </div>
+            <div class="mt-1.5 flex items-center text-slate-400 text-xs sm:text-sm md:text-base">
+                <span> Coded by Sameer Gupta (DTU Software)</span>
+                
+              
+            </div>
+        </div>
+        <div class="mt-12 flex justify-center space-x-5 font-medium">
+            <button id="female" onclick="setGender(0)" class="gender-active flex-center space-x-2 border-2 border-gray-500 rounded-md p-2 px-4 w-32">
+                <span class="iconify h-6 w-6" data-icon="icons8:user-female"></span>
+                <span>Female</span>
+            </button>
+            <button id="male" onclick="setGender(1)" class="flex-center space-x-2 border-2 border-gray-500 rounded-md p-2 px-4 w-32">
+                <span class="iconify h-6 w-6" data-icon="icons8:user-male"></span>
+                <span>Male</span>
+            </button>
+        </div>
+        <form class="flex flex-col font-medium items-center mt-7">
+            <div class="flex justify-end items-center space-x-3 px-2">
+                <div class="flex justify-end items-center space-x-2 min-w-[9rem]">
+                    <span class="iconify h-5 w-5" data-icon="lucide:cake"></span>
+                    <span class="w-max pr-3">Age </span>
+                </div>
+                <input required class="p-2 bg-gray-800/10 placeholder-slate-400/90 w-full max-w-xs rounded-md outline-none text-slate-100 px-3 border-2 border-gray-700 focus:border-red-400/80" type="number" name="age" id="age" max="99" placeholder="Your age in years">
+            </div>
+            <div class="flex mt-6 justify-center space-x-4 px-2">
+                <div class="flex-center space-x-2">
+                    <span class="iconify h-5 w-5" data-icon="healthicons:exercise-weights"></span>
+                    <span class="w-max">Excercise Time</span>
+                </div>
+                <input required class="p-2 bg-gray-800/10 placeholder-slate-400/90 w-full max-w-xs rounded-md outline-none text-slate-100 px-3 border-2 border-gray-700 focus:border-red-400/80" type="number" id="workout" max="999" placeholder="duration ( in mins )">
+            </div>
+            <div class="grid grid-cols-2 h-max items-center gap-x-5 mt-3 p-3 px-4 text-sm sm:text-base sm:px-2">
+                <div class="flex flex-col space-y-2.5">
+                    <div class="flex items-center ml-2 space-x-2">
+                        <span class="iconify h-5 w-5" data-icon="mdi:human-male-height"></span>
+                        <span class="w-max">Height </span>
+                    </div>
+                    <input required class="p-2 bg-gray-800/10 placeholder-slate-400/90 w-full max-w-xs rounded-md outline-none text-slate-100 px-3 border-2 border-gray-700 focus:border-red-400/80" type="number" name="age" id="height" max="269" placeholder="height ( in cm )">
+                </div>
+                <div class="flex flex-col space-y-2.5">
+                    <div class="flex items-center ml-2 space-x-2">
+                        <span class="iconify h-5 w-5" data-icon="mdi:weight-kilogram"></span>
+                        <span class="w-max">Weight </span>
+                    </div>
+                    <input required class="p-2 bg-gray-800/10 placeholder-slate-400/90 w-full max-w-xs rounded-md outline-none text-slate-100 px-3 border-2 border-gray-700 focus:border-red-400/80" type="number" name="age" id="weight" max="200" placeholder="weight ( in kg )">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 h-max items-center gap-x-5 mt-1 p-3 px-4 text-sm sm:text-base sm:px-2">
+                <div class="flex flex-col space-y-2.5">
+                    <div class="flex items-center ml-2 space-x-2">
+                        <span class="iconify h-5 w-5" data-icon="material-symbols:ecg-heart-sharp"></span>
+                        <span class="w-max">Heart Rate</span>
+                    </div>
+                    <input required class="p-2 bg-gray-800/10 placeholder-slate-400/90 w-full max-w-xs rounded-md outline-none text-slate-100 px-3 border-2 border-gray-700 focus:border-red-400/80" type="number" name="heart" id="heart" max="269" placeholder="heart rate">
+                </div>
+                <div class="flex flex-col space-y-2.5">
+                    <div class="flex items-center ml-1 space-x-1">
+                        <span class="iconify h-5 w-5" data-icon="fluent:temperature-24-regular"></span>
+                        <span class="w-max">Body Temperature</span>
+                    </div>
+                    <input required class="p-2 bg-gray-800/10 placeholder-slate-400/90 w-full max-w-xs rounded-md outline-none text-slate-100 px-3 border-2 border-gray-700 focus:border-red-400/80" type="number" name="temp" id="temp" max="99" placeholder="temprature ( in °C )">
+                </div>
+            </div>
+            <div class="flex-center mt-8">
+                <button type="submit" class="hover:scale-105 w-32 h-11 hover:bg-red-400 bg-red-400/80 p-2.5 px-4 rounded-md text-black font-semibold space-x-2">
+                    <div id="bt-txt" class="flex-center space-x-2">
+                        <span class="iconify h-5 w-5" data-icon="fluent:predictions-24-filled"></span>
+                        <span>Predict</span>
+                    </div>
+                    <div id="spin" class="!hidden flex-center">
+                        <span class="iconify h-5 w-5 animate-spin" data-icon="icomoon-free:spinner2"></span>
+                    </div>
+                </button>
+            </div>
+        </form>
+        <div id="model" class="absolute !hidden inset-0 h-full w-full z-10 bg-black-30 backdrop-blur-sm flex-center p-2">
+            <div class="relative flex-center flex-col h-80 md:h-96 w-full max-w-sm sm:max-w-md md:max-w-lg bg-gray-800 border-2 border-gray-600 rounded-md">
+                <div class="h-52 w-52">
+                    <img class="h-full w-full" src="{{ url_for('static', filename='fire.png') }}" alt="" srcset="">
+                </div>
+                <span class="text-lg font-semibold font-mono sm:text-2xl" id="result">You will burn 69 calories</span>
+                <button onclick="closeModel()" class="h-10 p-1 w-10 flex-center absolute top-5 right-5 bg-black/50 rounded-full">
+                    <span class="iconify h-8 w-8" data-icon="ep:close-bold"></span>
+                </button>
+            </div>
+        </div>
+        <div class="fixed text-slate-500 top-2 right-2 rounded-md p-2 bg-black/50 border-2 border-slate-700">
+            <a class="flex-center space-x-2" href="https://github.com/iamsdr/CaloriesBurntPredictor">
+                <span class="iconify h-6 w-6 cursor-pointer" data-icon="carbon:logo-github"></span>
+                <span class="font-semibold hidden sm:inline">Github</span>
+            </a>
+        </div>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+    </body>
+</html>
