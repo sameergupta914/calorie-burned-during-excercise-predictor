@@ -10,8 +10,9 @@
 - Easy-to-Use Interface: Simple and intuitive code structure for easy integration and use.
 - Real-Time Calculation: Immediate feedback on calorie burn based on the inputs provided.
 
-# Dependencies
-- Python 3.x
-- numpy: For numerical calculations.
-- pandas: For data manipulation.
-- scikit-learn: For machine learning models
+# Technologies Used:
+- Python for data processing and machine learning.
+- Pandas and NumPy for data manipulation.
+- Scikit-learn for building and deploying the predictive model.
+- Flask for backend API development.
+- HTML/CSS/JavaScript for the frontend.
