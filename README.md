@@ -1,4 +1,4 @@
-- Calorie Burned During Exercise Predictor
+#Calorie Burned During Exercise Predictor
 - Overview
 - The Calorie Burned During Exercise Predictor is a Python project aimed at providing users with an estimate of the calories burned during various types of exercises. The predictor takes into account the type of
   exercise, duration, intensity, and user-specific details such as weight, age, and gender to deliver accurate and personalized calorie burn estimates.
